@@ -24,6 +24,15 @@ JOIN "line_items"
 JOIN "products"
 	ON "line_items"."product_id" = "products"."id";
 
---Which warehouses have cheetos?    
+--Which warehouses have cheetos?  
+SELECT 
+	"products"."description" AS "productName",
+	"warehouse"."warehouse"
+FROM "products"
+JOIN "warehouse_product"
+	ON "products"."id" = "warehouse_product"."product_id"
+JOIN "warehouse"
+	ON "warehouse_product"."warehouse_id" = "warehouse"."id"
+WHERE "products"."description" = 'cheetos';  
 
 
